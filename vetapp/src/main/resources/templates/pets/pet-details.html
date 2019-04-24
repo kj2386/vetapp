@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Pet Information</title>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h3>Pet Information</h3>
+    <hr>
+
+    <table class="table table-boarded table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>Name</th>
+            <th>Type Of Pet</th>
+            <th>Breed</th>
+            <th>Owner</th>
+        </thead>
+
+        <tbody>
+        <tr th:object="${pet}">
+            <td th:text="${pet.name}"/>
+            <td th:text="${pet.typeOfPet}"/>
+            <td th:text="${pet.breed}"/>
+            <td th:text="${owner.firstName + ' ' + owner.lastName}"/>
+
+
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- Update -->
+    <a th:href="@{/owners/{id}/pets/update(petId=${pet.id}, id=${owner.id})}"
+       class="btn btn-info btn-sm">
+        Update
+    </a>
+
+    <!-- Delete -->
+    <a th:href="@{/owners/{id}/pets/delete(petId=${pet.id}, id=${owner.id})}"
+       class="btn btn-danger btn-sm"
+       onclick="if (!(confirm('Are you sure you want to delete this pet?'))) return false">
+        Delete
+    </a>
+
+    <!-- Back to Owner -->
+    <a th:href="@{/owners/ownerDetails(ownerId=${owner.id})}"
+       class="btn btn-primary btn-sm">
+        Back to Owner
+    </a>
+
+
+    <hr>
+    <a th:href="@{/owners/list}">Back to Owners List</a>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>New Owner Form</title>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h3>Owner Directory</h3>
+    <hr>
+
+    <p class="h4 mb-4">Save New Owner</p>
+
+    <form action="#" th:action="@{/owners/save}"
+          th:object="${owner}" method="POST">
+
+        <input type="hidden" th:field="*{id}">
+
+        <input type="text" th:field="*{firstName}"
+               class="form-control mb-4 col-4" placeholder="First Name" required>
+
+        <input type="text" th:field="*{lastName}"
+               class="form-control mb-4 col-4" placeholder="Last Name" required>
+
+        <input type="date" th:field="*{dob}"
+               class="form-control mb-4 col-4" placeholder="DOB" required>
+
+        <input type="text" th:field="*{address}"
+               class="form-control mb-4 col-4" placeholder="Address" required>
+
+        <input type="text" th:field="*{city}"
+               class="form-control mb-4 col-4" placeholder="City" required>
+
+        <input type="text" th:field="*{State}"
+               class="form-control mb-4 col-4" placeholder="State" required>
+
+        <input type="text" th:field="*{zip}"
+               class="form-control mb-4 col-4" placeholder="zip" required>
+
+        <input type="email" th:field="*{email}"
+               class="form-control mb-4 col-4" placeholder="Email">
+
+        <input type="tel" th:field="*{phoneNumber}"
+               class="form-control mb-4 col-4" placeholder="Phone Number" required>
+
+        <button type="submit" class="btn btn-info col-2">Save</button>
+    </form>
+
+    <hr>
+    <a th:href="@{/owners/list}">Back to Owners List</a>
+
+</div>
+</body>
+</html>

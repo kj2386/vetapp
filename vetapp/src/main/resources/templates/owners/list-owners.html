@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Owner Directory</title>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h3>Owner Directory</h3>
+    <hr>
+
+    <a th:href="@{/owners/showFormForAdd}"
+       class="btn btn-primary btn-sm mb-3">
+        Add Owner
+    </a>
+
+    <table class="table table-boarded table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>Name</th>
+            <th>DOB</th>
+            <th>Phone Number</th>
+            <th>Pets</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="owner : ${owners}">
+
+            <td>
+                <a th:href="@{/owners/ownerDetails(ownerId=${owner.id})}"
+                   th:text="${owner.firstName + ' ' + owner.lastName}"/>
+            </td>
+            <td th:text="${owner.dob}"/>
+            <td th:text="${owner.phoneNumber}"/>
+            <td>
+                <a th:each="pet : ${owner.pets}"
+                th:href="@{{id}/petDetails(petId=${pet.id}, id=${owner.id})}"
+                th:text="${pet.name + ' '}" />
+            </td>
+
+
+
+
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>
