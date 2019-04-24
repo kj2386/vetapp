@@ -1,17 +1,12 @@
 package com.example.vetapp.controller;
 
 import com.example.vetapp.entity.Owner;
-import com.example.vetapp.entity.Pet;
+
 import com.example.vetapp.service.OwnerService;
-import com.example.vetapp.service.PetService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
