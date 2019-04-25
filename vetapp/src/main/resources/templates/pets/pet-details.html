@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+
+
     <title>Pet Information</title>
 </head>
 
@@ -18,7 +21,7 @@
     <h3>Pet Information</h3>
     <hr>
 
-    <table class="table table-boarded table-striped">
+    <table id="pet_details" class="display">
         <thead class="thead-dark">
         <tr>
             <th>Name</th>
@@ -63,5 +66,14 @@
     <a th:href="@{/owners/list}">Back to Owners List</a>
 
 </div>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+<script type="text/javascript">
+   $(document).ready(function() {
+    $('#pet_details').DataTable();
+} );
+
+</script>
 </body>
 </html>
