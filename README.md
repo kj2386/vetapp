@@ -3,7 +3,7 @@
 **Project description:** CRUD app using Spring Boot for a veterinarian clinic stored into MySQL. Has login information stored into database with BCrypt passwords. Table is set with jQuery data tables.
 
 ### Login
-<img src="images/login.png?raw=true"/>
+<img src="images/login.png?raw=true" width="100" height="100"/>
 <img src="images/usersql.png?raw=true"/>
 <img src="images/logincode.png?raw=true"/>
 Login information stored into MySQL with BCrypt passwords. 
