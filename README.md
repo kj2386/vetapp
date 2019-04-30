@@ -10,7 +10,8 @@
 
 
 ### Login
-[<img src="images/login.png?raw=true" width="250" height="250"/>](https://raw.githubusercontent.com/kj2386/vetapp/master/images/login.png)[<img src="images/logincode.png?raw=true" width="250" height="250"/>](https://raw.githubusercontent.com/kj2386/vetapp/master/images/logincode.png)
+[<img src="images/login.png?raw=true" width="250" height="250"/>](https://raw.githubusercontent.com/kj2386/vetapp/master/images/login.png)
+[<img src="images/logincode.png?raw=true" width="250" height="250"/>](https://raw.githubusercontent.com/kj2386/vetapp/master/images/logincode.png)
 <br>
 Login information stored into MySQL with BCrypt passwords. 
 
