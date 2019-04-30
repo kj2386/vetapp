@@ -3,7 +3,7 @@
 **Project description:** CRUD app using Spring Boot for a veterinarian clinic stored into MySQL. Has login information stored into database with BCrypt passwords. Table is set with jQuery data tables.
 
 ### Login
-<img src="images/logincollage.png?raw=true"/>
+<img src="images/logincollage.jpg?raw=true"/>
 Login information stored into MySQL with BCrypt passwords. 
 
 ### 2. Assess assumptions on which statistical inference will be based
