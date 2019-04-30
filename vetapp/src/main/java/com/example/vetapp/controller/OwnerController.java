@@ -16,7 +16,6 @@ public class OwnerController {
     private OwnerService ownerService;
 
 
-
     public OwnerController(OwnerService theOwnerService) {
         ownerService = theOwnerService;
     }
@@ -40,14 +39,14 @@ public class OwnerController {
     }
 
     @GetMapping("/showFormForUpdate")
-    public String showFormForUpdate(@RequestParam("ownerId") int theId,  Model theModel) {
+    public String showFormForUpdate(@RequestParam("ownerId") int theId, Model theModel) {
         Owner theOwner = ownerService.findById(theId);
         theModel.addAttribute("owner", theOwner);
         return "owners/owner-form";
     }
 
     @PostMapping("/save")
-    public String saveOwner(@ModelAttribute("owner") Owner theOwner){
+    public String saveOwner(@ModelAttribute("owner") Owner theOwner) {
         if (theOwner.getId() == 0) {
             ownerService.save(theOwner);
             return "redirect:/owners/list";

@@ -48,7 +48,7 @@
             <td>
                 <a th:each="pet : ${owner.pets}"
                    th:href="@{{id}/petDetails(petId=${pet.id}, id=${owner.id})}"
-                   th:text="${pet.name + ' '}" />
+                   th:text="${pet.name + ' '}"/>
             </td>
         </tr>
         </tbody>
@@ -84,6 +84,7 @@
    $(document).ready(function() {
     $('#owner_details').DataTable();
 } );
+
 
 </script>
 </body>

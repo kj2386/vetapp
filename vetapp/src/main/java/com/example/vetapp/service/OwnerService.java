@@ -15,5 +15,4 @@ public interface OwnerService {
     public void deleteById(int theId);
 
 
-
 }

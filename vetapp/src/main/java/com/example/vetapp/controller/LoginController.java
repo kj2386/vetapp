@@ -30,7 +30,7 @@ public class LoginController {
     }
 
     @GetMapping("/registration")
-    public  ModelAndView registration() {
+    public ModelAndView registration() {
         ModelAndView modelAndView = new ModelAndView();
         User user = new User();
         modelAndView.addObject("user", user);
