@@ -1,6 +1,6 @@
 ## Veterinarian CRUD APP
 
-**Project description:** CRUD app using Spring Boot for a veterinarian clinic stored into MySQL. Has login information stored into database with BCrypt passwords. Table is set with jQuery data tables. For the complete project code, see it on Github [here](https://github.com/kj2386/vetapp).
+**Project description:** CRUD app using Spring Boot and Spring MVC for a veterinarian clinic's customer and pet information stored into MySQL. Has login information stored into database with BCrypt passwords using Spring Security. Table is set with jQuery data tables. View pages are created using HTML, CSS, Bootstrap and Thymeleaf. For the complete project code, see it on Github [here](https://github.com/kj2386/vetapp).
 
 ### Login and registering a new user
 New user is created as a POJO and is saved into the database with a Bcrypted password using Spring Security. 
@@ -65,7 +65,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 ### Main Page
 [<img src="images/vetappmain.png?raw=true" width="100%" height="100%"/>](https://raw.githubusercontent.com/kj2386/vetapp/master/images/vetappmain.png)
 
-Table was created using jQuery Data Tables and has the function to alphabatize owner name in ascending and descending order and has a search function. On this page you can add a new owner and is created as a POJO.
+Table was created using jQuery Data Tables and has the function to alphabatize owner name in ascending and descending order and has a search function. On this page you can add a new owner which is created as a POJO.
 
 ```java
 @Entity
@@ -108,6 +108,147 @@ public class Owner implements Serializable {
     @JoinColumn(name = "owner_id")
     private List<Pet> pets = new ArrayList<>();
 ```
+### Controllers for Owner and Pet 
+```java
+@Controller
+@RequestMapping("/owners")
+public class OwnerController {
+
+    private OwnerService ownerService;
+
+
+    public OwnerController(OwnerService theOwnerService) {
+        ownerService = theOwnerService;
+    }
+
+    @GetMapping("/list")
+    public String listOwners(Model theModel) {
+
+        List<Owner> theOwners = ownerService.findAll();
+
+        theModel.addAttribute("owners", theOwners);
+
+        return "owners/list-owners";
+    }
+
+    @GetMapping("/showFormForAdd")
+    public String showFormForAdd(Model theModel) {
+        Owner theOwner = new Owner();
+        theModel.addAttribute("owner", theOwner);
+
+        return "owners/owner-form";
+    }
+
+    @GetMapping("/showFormForUpdate")
+    public String showFormForUpdate(@RequestParam("ownerId") int theId, Model theModel) {
+        Owner theOwner = ownerService.findById(theId);
+        theModel.addAttribute("owner", theOwner);
+        return "owners/owner-form";
+    }
+
+    @PostMapping("/save")
+    public String saveOwner(@ModelAttribute("owner") Owner theOwner) {
+        if (theOwner.getId() == 0) {
+            ownerService.save(theOwner);
+            return "redirect:/owners/list";
+        }
+        Owner currOwner = ownerService.findById(theOwner.getId());
+        theOwner.setPets(currOwner.getPets());
+        ownerService.save(theOwner);
+        return "redirect:/owners/list";
+    }
+
+
+    @GetMapping("/delete")
+    public String delete(@RequestParam("ownerId") int theId) {
+        ownerService.deleteById(theId);
+        return "redirect:/owners/list";
+    }
+
+    @GetMapping("/ownerDetails")
+    public String ownerDetails(@RequestParam("ownerId") int theId, Model theModel) {
+        Owner theOwner = ownerService.findById(theId);
+        theModel.addAttribute("owner", theOwner);
+        return "owners/owner-details";
+
+    }
+}
+```
+```java
+@Controller
+@RequestMapping("/owners/{ownerId}")
+public class PetController {
+
+    private PetService petService;
+
+    @Autowired
+    private OwnerService ownerService;
+
+    @ModelAttribute("owner")
+    public Owner findOwner(@PathVariable("ownerId") int theId) {
+        return ownerService.findById(theId);
+    }
+
+    @InitBinder("owner")
+    public void initOwnerBinder(WebDataBinder dataBinder) {
+        dataBinder.setDisallowedFields("id");
+    }
+
+    public PetController(PetService thePetService) {
+        petService = thePetService;
+    }
+
+    @GetMapping("/list")
+    public String listPets(Model theModel) {
+
+        List<Pet> thePets = petService.findAll();
+
+        theModel.addAttribute("pets", thePets);
+
+        return "pets/list-pets";
+    }
+
+    @GetMapping("/pets/new")
+    public String showFormForAdd(Owner owner, Model theModel) {
+        Pet thePet = new Pet();
+        owner.addPet(thePet);
+        theModel.addAttribute("pet", thePet);
+
+        return "pets/pet-form";
+    }
+
+    @PostMapping("/pets/save")
+    public String savePet(@ModelAttribute("pet") Pet thePet, Owner theOwner) {
+        theOwner.getPets().add(thePet);
+        thePet.setOwner(theOwner);
+        petService.save(thePet);
+
+        return "redirect:/owners/list";
+    }
+
+    @GetMapping("/petDetails")
+    public String petDetails(@RequestParam("petId") int theId, Model theModel) {
+        Pet thePet = petService.findById(theId);
+        theModel.addAttribute("pet", thePet);
+        return "pets/pet-details";
+    }
+
+    @GetMapping("/pets/update")
+    public String showFormForUpdate(@RequestParam("petId") int theId, Model theModel) {
+        Pet thePet = petService.findById(theId);
+        theModel.addAttribute("pet", thePet);
+        return "pets/pet-form";
+    }
+
+    @GetMapping("/pets/delete")
+    public String deletePet(@RequestParam("petId") int theId) {
+        petService.deleteById(theId);
+        return "redirect:/owners/list";
+    }
+
+}
+```
+
 ### Owner Details
 Clicking on an owner's name on the mainpage will bring up the owner's details. From here you can add any pets and update the owner's information. Any updates will be saved into the database. 
 
@@ -208,11 +349,13 @@ Clicking on an owner's name on the mainpage will bring up the owner's details. F
 ```
 The new pet form will populate the owner's name.
 
-[<img src="images/newpet.png?raw=true" width="50%" height="50%"/>](https://raw.githubusercontent.com/kj2386/vetapp/master/images/newpet.png)
+[<img src="images/newpet.png?raw=true" width="75%" height="75%"/>](https://raw.githubusercontent.com/kj2386/vetapp/master/images/newpet.png)
 
 ### Pet Details
 After adding a pet, clicking on the pet's name will bring up the pet's details similar to the owner's detail page. From there you may update or delete the pet. 
 
-[<img src="images/petdetails.png?raw=true" width="50%" height="50%"/>](https://raw.githubusercontent.com/kj2386/vetapp/master/images/petdetails.png)
+[<img src="images/petdetails.png?raw=true" width="75%" height="75%"/>](https://raw.githubusercontent.com/kj2386/vetapp/master/images/petdetails.png)
+
+---
 
 For the complete project code, see it [here](https://github.com/kj2386/vetapp).
