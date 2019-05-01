@@ -1,6 +1,6 @@
 ## Veterinarian CRUD APP
 
-**Project description:** CRUD app using Spring Boot for a veterinarian clinic stored into MySQL. Has login information stored into database with BCrypt passwords. Table is set with jQuery data tables. For the complete code, see it on Github [here](https://github.com/kj2386/vetapp).
+**Project description:** CRUD app using Spring Boot for a veterinarian clinic stored into MySQL. Has login information stored into database with BCrypt passwords. Table is set with jQuery data tables. For the complete project code, see it on Github [here](https://github.com/kj2386/vetapp).
 
 ### Login and registering a new user
 New user is created as a POJO and is saved into the database with a Bcrypted password using Spring Security. 
