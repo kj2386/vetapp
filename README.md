@@ -215,9 +215,4 @@ After adding a pet, clicking on the pet's name will bring up the pet's details s
 
 [<img src="images/petdetails.png?raw=true" width="50%" height="50%"/>](https://raw.githubusercontent.com/kj2386/vetapp/master/images/petdetails.png)
 
- 
-
-
-
-
-For more details see it on Github [here](https://github.com/kj2386/vetapp).
+For the complete project code, see it [here](https://github.com/kj2386/vetapp).
