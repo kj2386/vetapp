@@ -184,7 +184,7 @@ Clicking on an owner's name on the mainpage will bring up the owner's details. F
     </a>
 
     <!-- Add Pet -->
-    <a th:href="@{{id}/pets/new(id=${owner.id})}"
+    <a th:href="@{{id}}/pets/new(id=${owner.id})}"
        class="btn btn-primary btn-sm">
         Add Pet
     </a>
