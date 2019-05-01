@@ -62,19 +62,79 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 [<img src="images/registrationform.png?raw=true" width="40%" height="40%"/>](https://raw.githubusercontent.com/kj2386/vetapp/master/images/registrationform.png)
 [<img src="images/usersql.png?raw=true" width="40%" height="40%"/>](https://raw.githubusercontent.com/kj2386/vetapp/master/images/usersql.png)
 
+### Main Page
+Owner and pet are created as POJOs and linked together by a foreign key. Deleting an owner will delete the pet/pets associate with that owner. Table was created using jQuery Data Tables and has the function to alphabatize owner name in ascending and descending order and has a search function. 
 
+```java
+@Entity
+@Table(name = "owner")
+public class Owner implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
 
+    @Column(name = "first_name")
+    private String firstName;
 
+    @Column(name = "last_name")
+    private String lastName;
 
+    @Column(name = "dob")
+    private String dob;
 
-### 2. Assess assumptions on which statistical inference will be based
+    @Column(name = "address")
+    private String address;
 
-```javascript
-if (isAwesome){
-  return true
-}
+    @Column(name = "city")
+    private String city;
+
+    @Column(name = "state")
+    private String state;
+
+    @Column(name = "zip")
+    private String zip;
+
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "phone_number")
+    private String phoneNumber;
+
+    @OneToMany(cascade = {CascadeType.MERGE}, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JoinColumn(name = "owner_id")
+    private List<Pet> pets = new ArrayList<>();
 ```
+```java
+@Entity
+@Table(name = "pet")
+public class Pet implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
+
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "type_of_pet")
+    private String typeOfPet;
+
+    @Column(name = "breed")
+    private String breed;
+
+    @ManyToOne
+    @JoinColumn(name = "owner_id")
+    private Owner owner;
+```
+[<img src="images/vetappmain.png?raw=true" width="100%" height="100%"/>](https://raw.githubusercontent.com/kj2386/vetapp/master/images/vetappmain.png)
+
+Clicking on an owner's name will bring up more details about that owner with their pets. 
+
+ 
+
 
 ### 3. Support the selection of appropriate statistical tools and techniques
 
