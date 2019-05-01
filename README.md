@@ -3,10 +3,21 @@
 **Project description:** CRUD app using Spring Boot for a veterinarian clinic stored into MySQL. Has login information stored into database with BCrypt passwords. Table is set with jQuery data tables.
 
 ### Login and registering a new user
-New user information is saved into the database with a Bcrypted password.
+New user is created as a POJO and is saved into the database with a Bcrypted password using Spring Security. 
+```java
+@Configuration
+public class WebMvcConfig implements WebMvcConfigurer {
 
-[<img src="images/login.png?raw=true" width="30%" height="30%"/>](https://raw.githubusercontent.com/kj2386/vetapp/master/images/login.png)
-[<img src="images/registrationform.png?raw=true" width="30%" height="30%"/>](https://raw.githubusercontent.com/kj2386/vetapp/master/images/registrationform.png)
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        return bCryptPasswordEncoder;
+    }
+}
+```
+[<img src="images/registrationform.png?raw=true" width="50%" height="50%"/>](https://raw.githubusercontent.com/kj2386/vetapp/master/images/registrationform.png)
+
+
 
 
 
