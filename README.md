@@ -209,7 +209,7 @@ Clicking on an owner's name on the mainpage will bring up the owner's details. F
 
 The new pet form will populate the owner's name.
 
-[<img src="images/newpet.png?raw=true" width="40%" height="40%"/>](https://raw.githubusercontent.com/kj2386/vetapp/master/images/newpet.png)
+[<img src="images/newpet.png?raw=true" width="75%" height="75%"/>](https://raw.githubusercontent.com/kj2386/vetapp/master/images/newpet.png)
 
 ### Pet Details
 After adding a pet, clicking on the pet's name will bring up the pet's details similar to the owner's detail page. From there you may update or delete the pet. 
