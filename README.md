@@ -206,9 +206,7 @@ Clicking on an owner's name on the mainpage will bring up the owner's details. F
 </body>
 </html>
 ```
-
 The new pet form will populate the owner's name.
-
 [<img src="images/newpet.png?raw=true" width="75%" height="75%"/>](https://raw.githubusercontent.com/kj2386/vetapp/master/images/newpet.png)
 
 ### Pet Details
