@@ -163,7 +163,7 @@ Clicking on an owner's name on the mainpage will bring up the owner's details. F
             <td th:text="${owner.phoneNumber}"/>
             <td>
                 <a th:each="pet : ${owner.pets}"
-                   th:href="@{{id}/petDetails(petId=${pet.id}, id=${owner.id})}"
+                   th:href="@{{id}}/petDetails(petId=${pet.id}, id=${owner.id})}"
                    th:text="${pet.name + ' '}"/>
             </td>
         </tr>
