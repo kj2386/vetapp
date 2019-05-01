@@ -2,18 +2,15 @@
 
 **Project description:** CRUD app using Spring Boot for a veterinarian clinic stored into MySQL. Has login information stored into database with BCrypt passwords. Table is set with jQuery data tables.
 
-### Registration
+### Login and registering a new user
+New user information is saved into the database with a Bcrypted password.
 
-[<img src="images/registrationform.png?raw=true" width="250" height="250"/>](https://raw.githubusercontent.com/kj2386/vetapp/master/images/registrationform.png)
-[<img src="images/usersql.png?raw=true" width="250" height="250"/>](https://raw.githubusercontent.com/kj2386/vetapp/master/images/usersql.png)
-[<img src="images/registration.png?raw=true" width="250" height="250"/>](https://raw.githubusercontent.com/kj2386/vetapp/master/images/registration.png)
+[<img src="images/login.png?raw=true" width="30%" height="30%"/>](https://raw.githubusercontent.com/kj2386/vetapp/master/images/login.png)
+[<img src="images/registrationform.png?raw=true" width="30%" height="30%"/>](https://raw.githubusercontent.com/kj2386/vetapp/master/images/registrationform.png)
 
 
-### Login
-[<img src="images/login.png?raw=true" width="250" height="250"/>](https://raw.githubusercontent.com/kj2386/vetapp/master/images/login.png)
-[<img src="images/logincode.png?raw=true" width="250" height="250"/>](https://raw.githubusercontent.com/kj2386/vetapp/master/images/logincode.png)
-<br>
-Login information stored into MySQL with BCrypt passwords. 
+
+
 
 ### 2. Assess assumptions on which statistical inference will be based
 
